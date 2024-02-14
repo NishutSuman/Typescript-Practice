@@ -46,4 +46,15 @@
 
 // ------------ GENERIC -----------
 
-//- use of <> and identity
+//- use of <> angular brackets.
+//- <Type> the type we take as generic for the function will  take the same type of arguments and will also return the value of same type.
+// - Generics helps us to build reusable components.
+// - We can create our own generic type using interface and pass it to the functions.
+
+// function products<T>(id: T[]): T{
+//     return id[3];
+// }
+
+// - Here from the above function, the argument is an array of type T and the output need to be of type T from that same array. The function should return a value from that same array.
+// - <T,> this is also accaptable.
+// - typeof is the type guard.

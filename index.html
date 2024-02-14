@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js"></script>
+	</head>
+	<body>
+		<h2>Rx JS Practice</h2>
+		<h3>Observable, Observer and Subscription</h3>
+		<button type="button">Click Me</button>
+	</body>
+</html>
+<script>
+	var button = document.querySelector("button");
+	button.textContent = "Subscribe";
+
+	var observer = {
+		next: function (value) {
+			console.log(value);
+		},
+		error: function (error) {
+			console.log(error);
+		},
+		complete: function () {
+			console.log("completed");
+		},
+	};
+
+	// rxjs.fromEvent(button, 'click').subscribe(observer);
+
+	var subscription1= rxjs.Observable.create(function (obs) {
+		// obs.next("A Value");
+		// obs.error("ErrorMsg");
+		// Asynchronously subscribed
+		// setTimeout(function () {
+		//     obs.next("B Value");
+		// 	obs.complete();
+		// },2000)
+		button.onclick = function () {
+			// setTimeout(function () {
+				obs.next("A Value");
+			// }, 2000);
+		};
+		// obs.complete();
+	}).subscribe(observer);
+
+    setTimeout(function () {
+        subscription1.unsubscribe();
+    }, 5000)
+    
+</script>
